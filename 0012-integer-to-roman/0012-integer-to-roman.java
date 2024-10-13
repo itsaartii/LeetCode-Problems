@@ -1,11 +1,14 @@
 class Solution {
     public String intToRoman(int num) {
-        String thousand[]={"","M","MM","MMM"};
-        String hundred[]={"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
-        String ten[]={"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
-        String one[]={"","I","II","III","IV","V","VI","VII","VIII","IX"};
-        
-        
-        return thousand[num/1000]+hundred[(num%1000)/100]+ten[(num%100)/10]+one[num%10];
+        String p = "";
+        String s[] = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+        int nums[] = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        for(int i =0; i < 13; i++){
+            while(num>=nums[i]){
+                p += s[i];
+                num-=nums[i];
+            }
+        }
+        return p;
     }
 }
